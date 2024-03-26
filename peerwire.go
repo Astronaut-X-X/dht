@@ -243,7 +243,7 @@ func (wire *Wire) fetchMetadata(r Request) {
 
 	dial, err := net.DialTimeout("tcp", address, time.Second*15)
 	if err != nil {
-		wire.blackList.insert(r.IP, r.Port)
+		wire.blackList.delete(r.IP, r.Port)
 		return
 	}
 	conn := dial.(*net.TCPConn)
